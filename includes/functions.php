@@ -13,7 +13,15 @@ function getAllHotels()
 
     return $hotels;
 }
+function getNewestHotels()
+{
+    global $dbh;   
+    
+    $sql = "SELECT `id`, `name`, `stars` FROM `hotels` WHERE `status` = 'active' ORDER BY `created_at` DESC LIMIT 3;";
+    $newestHotels = $dbh->query($sql, PDO::FETCH_ASSOC);
 
+    return $newestHotels;
+}
 /**
  * Get All Users list
  * 
@@ -28,7 +36,18 @@ function getAllUsers()
 
     return $users;
 }
+function getHotel($id)
+{    
+    global $dbh;   
+    
+    $sql = "SELECT `id`, `name`, `description`,`stars`FROM `hotels` WHERE `status` = 'active' AND `id` = " . $id . ";";
 
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $hotel = $sth->fetch(PDO::FETCH_ASSOC);
+
+    return $hotel;
+}
 /**
  * Register User
  * 
@@ -128,4 +147,33 @@ function loginUser()
             }           
         }
     }
+}
+
+//list newest hotels by created_at - colums id , name, stars and limithem to 3;
+function getMenu($path)
+{
+    if (strlen($path) > 1) {
+    $homepagePath = '.';
+       } else {
+    $homepagePath = '..';
+}
+ ?> <ul>
+            <li><a href="<?php echo $homepagePath;?>/index.php">Начало</a></li>
+            <li><a href="<?php echo $path;?>/hotels.php">Хотели</a></li>
+            <li><a href="<?php echo $path;?>/users.php">Потребители</a></li>
+            
+            <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true): ?>
+            
+            <li>Welcome <strong><?php echo $_SESSION['user']['username']; ?></strong></li>
+            <li><a href="<?php echo $path;?>/logout.php">Изход</a></li>
+            
+            <?php else: ?>
+            
+            <li><a href="<?php echo $path;?>/login.php">Вход</a></li>
+            <li><a href="<?php echo $path;?>/register.php">Регистрация</a></li>
+            
+            <?php endif;?>
+        </ul>
+
+<?php
 }
