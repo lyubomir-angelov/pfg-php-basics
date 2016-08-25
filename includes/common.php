@@ -3,7 +3,7 @@ session_start();
 
 $dsn = 'mysql:dbname=hotels;host=localhost';
 $user = 'root';
-$password = 'lubaka';
+$password = '';
 
 try {
     $dbh = new PDO($dsn, $user, $password);

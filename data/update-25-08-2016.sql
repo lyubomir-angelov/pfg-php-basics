@@ -1,0 +1,2 @@
+ALTER TABLE `hotels`
+ADD COLUMN `user_id` DATETIME NULL AFTER `status`;

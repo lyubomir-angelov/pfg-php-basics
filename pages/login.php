@@ -23,12 +23,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Login') {
     </head>   
     <body>
         <h1>ЛОГО</h1>
-        <ul>
-            <li><a href="./index.php">Начало</a></li>
-            <li><a href="./pages/hotels.php">Хотели</a></li>
-            <li><a href="./pages/login.php" style="font-weight:bold;">Вход</a></li>
-            <li><a href="./pages/register.php" >Регистрация</a></li>
-        </ul>  
+<?php echo getMenu('.') ?> 
         
         <hr/>
         

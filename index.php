@@ -11,23 +11,7 @@ include_once './includes/functions.php';
     </head>   
     <body>
         <h1>ЛОГО</h1>
-        <ul>
-            <li><a href="./index.php">Начало</a></li>
-            <li><a href="./pages/hotels.php">Хотели</a></li>
-            <li><a href="./pages/users.php">Потребители</a></li>
-            
-            <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true): ?>
-            
-            <li>Welcome <strong><?php echo $_SESSION['user']['username']; ?></strong></li>
-            <li><a href="./pages/logout.php">Изход</a></li>
-            
-            <?php else: ?>
-            
-            <li><a href="./pages/login.php">Вход</a></li>
-            <li><a href="./pages/register.php">Регистрация</a></li>
-            
-            <?php endif;?>
-        </ul>  
+        <?php echo getMenu('./pages') ?>
         
         <hr/>
         
@@ -37,8 +21,8 @@ include_once './includes/functions.php';
               //FIXME: something
         ?>
         <ul>
-        <?php foreach (getAllHotels() as $hotel):?>
-        <li><a href=""><?php echo $hotel['name'];?></a></li>
+        <?php foreach (getNewestHotels() as $newesthotels):?>
+        <li><a href="./pages/view-hotel.php?id=<?php echo $newesthotels['id']; ?>"><?php echo $newesthotels['name'] . ' </a> ' . $newesthotels['stars'];?></li>
         <?php endforeach;?>
         </ul>  
     </body> 
