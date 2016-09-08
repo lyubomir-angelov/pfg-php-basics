@@ -19,7 +19,7 @@ include_once '../includes/functions.php';
         
         <ul>
         <?php foreach (getAllUsers() as $user):?>
-        <li><a href=""><?php echo $user['username'];?></a></li>
+        <li><a href="./view-user.php?id=<?php echo $user['id']; ?>"><?php echo $user['username'];?></a></li>
         <?php endforeach;?>
         </ul>  
     </body> 

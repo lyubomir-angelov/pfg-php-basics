@@ -4,6 +4,38 @@
  * 
  * @return array
  */
+function getCategory()
+{    
+    global $dbh;   
+    
+    $sql = "SELECT `id`,`title` FROM `categories` ;";
+    $newcat = $dbh->query($sql, PDO::FETCH_ASSOC);
+
+    return $newcat;
+}
+
+function getNewUsers()
+{    
+    global $dbh;   
+    
+    $sql = "SELECT `id`,`username` FROM `users` ORDER BY `created_at` ASC ;";
+    $newusers = $dbh->query($sql, PDO::FETCH_ASSOC);
+
+    return $newusers;
+}
+
+function getUser($id)
+{    
+    global $dbh;   
+    
+    $sql = "SELECT `id`, `username`,`email`,`gender` FROM `users` WHERE `id` = " . $id . " ;";
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $userdetail = $sth->fetch(PDO::FETCH_ASSOC);
+
+    return $userdetail;
+}
+
 function getHotel($id)
 {    
     global $dbh;   

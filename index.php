@@ -15,14 +15,20 @@ include_once './includes/functions.php';
         
         <hr/>
         
-        <h2>Новите хотели</h2>
+        <h2>Новите потребители</h2>
         
         <?php //TODO: List newest hotels
               //FIXME: something
         ?>
         <ul>
-        <?php foreach (getNewestHotels() as $newesthotels):?>
-        <li><a href="./pages/view-hotel.php?id=<?php echo $newesthotels['id']; ?>"><?php echo $newesthotels['name'] . ' </a> ' . $newesthotels['stars'];?></li>
+        <?php foreach (getNewUsers() as $newuser):?>
+        <li><a href="./pages/view-user.php?id=<?php echo $newuser['id']; ?>"><?php echo $newuser['username'];?></a></li>
+        <?php endforeach;?>
+        </ul>  
+
+        <ul>
+        <?php foreach (getCategory() as $cat):?>
+        <li><?php echo $cat ['title'] ;?></li>
         <?php endforeach;?>
         </ul>  
     </body> 
