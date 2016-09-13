@@ -2,6 +2,8 @@
 include_once './includes/common.php';
 include_once './includes/functions.php';
 //var_dump($_SESSION);
+
+//var_dump($_SERVER);
 ?>
 <!DOCTYPE html>   
 <html> 
@@ -11,34 +13,19 @@ include_once './includes/functions.php';
     </head>   
     <body>
         <h1>ЛОГО</h1>
-        <ul>
-            <li><a href="./index.php">Начало</a></li>
-            <li><a href="./pages/hotels.php">Хотели</a></li>
-            <li><a href="./pages/users.php">Потребители</a></li>
-            
-            <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true): ?>
-            
-            <li>Welcome <strong><?php echo $_SESSION['user']['username']; ?></strong></li>
-            <li><a href="./pages/logout.php">Изход</a></li>
-            
-            <?php else: ?>
-            
-            <li><a href="./pages/login.php">Вход</a></li>
-            <li><a href="./pages/register.php">Регистрация</a></li>
-            
-            <?php endif;?>
-        </ul>  
+        
+        <?php echo getMenu('./pages'); ?>
         
         <hr/>
         
         <h2>Новите хотели</h2>
         
-        <?php //TODO: List newest hotels
+        <?php //TODO: List newest hotels by created_at - columns id, name, stars and limit them to 3;
               //FIXME: something
         ?>
         <ul>
-        <?php foreach (getAllHotels() as $hotel):?>
-        <li><a href=""><?php echo $hotel['name'];?></a></li>
+        <?php foreach (getNewHotels() as $hotel):?>
+        <li><a href="./pages/view-hotel.php?id=<?php echo $hotel['id'];?>"><?php echo $hotel['name'];?></a></li>
         <?php endforeach;?>
         </ul>  
     </body> 
