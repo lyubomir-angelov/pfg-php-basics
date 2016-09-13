@@ -33,10 +33,16 @@ if (isset($_POST['submit'])) {
             <div>
                 <label>Име:</label><br/>
                 <input type="text" name="name" value="" />
+                <?php if (!empty($_SESSION['addHotelErrors']['name'])): ?>
+                <span style="color:red"><?php echo $_SESSION['addHotelErrors']['name']; ?></span>
+            <?php endif;?>
             </div>
             <div>
                 <label>Описание:</label><br/>
                 <textarea rows="5" cols="20" name="description"></textarea>
+                <?php if (!empty($_SESSION['addHotelErrors']['description'])): ?>
+                <span style="color:red"><?php echo $_SESSION['addHotelErrors']['description']; ?></span>
+            <?php endif;?>
             </div>
             <div>
                 <label>Stars:</label><br/>

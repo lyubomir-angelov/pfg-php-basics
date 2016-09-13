@@ -4,6 +4,18 @@
  * 
  * @return array
  */
+function deleteHotel($id)
+{    
+    global $dbh;   
+    $sql = "DELETE FROM `hotels` WHERE `id`= $id ;";
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $hotel = $sth->fetch(PDO::FETCH_ASSOC);
+
+    return $hotel;
+
+}
+
 function getAllHotels()
 {    
     global $dbh;   
