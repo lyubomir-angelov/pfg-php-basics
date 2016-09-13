@@ -2,6 +2,8 @@
 include_once './includes/common.php';
 include_once './includes/functions.php';
 //var_dump($_SESSION);
+
+//var_dump($_SERVER);
 ?>
 <!DOCTYPE html>   
 <html> 
@@ -11,24 +13,19 @@ include_once './includes/functions.php';
     </head>   
     <body>
         <h1>ЛОГО</h1>
-        <?php echo getMenu('./pages') ?>
+        
+        <?php echo getMenu('./pages'); ?>
         
         <hr/>
         
-        <h2>Новите потребители</h2>
+        <h2>Новите хотели</h2>
         
-        <?php //TODO: List newest hotels
+        <?php //TODO: List newest hotels by created_at - columns id, name, stars and limit them to 3;
               //FIXME: something
         ?>
         <ul>
-        <?php foreach (getNewUsers() as $newuser):?>
-        <li><a href="./pages/view-user.php?id=<?php echo $newuser['id']; ?>"><?php echo $newuser['username'];?></a></li>
-        <?php endforeach;?>
-        </ul>  
-
-        <ul>
-        <?php foreach (getCategory() as $cat):?>
-        <li><?php echo $cat ['title'] ;?></li>
+        <?php foreach (getNewHotels() as $hotel):?>
+        <li><a href="./pages/view-hotel.php?id=<?php echo $hotel['id'];?>"><?php echo $hotel['name'];?></a></li>
         <?php endforeach;?>
         </ul>  
     </body> 

@@ -11,7 +11,8 @@ include_once '../includes/functions.php';
     </head>   
     <body>
         <h1>ЛОГО</h1>
-        <?php echo getMenu('.') ?>
+        
+        <?php echo getMenu('.'); ?> 
         
         <hr/>
         
@@ -19,9 +20,12 @@ include_once '../includes/functions.php';
         
         <ul>
         <?php foreach (getAllHotels() as $hotel):?>
-        <li><a href="./view-hotel.php?id= <?php echo $hotel['id']; ?>"><?php echo $hotel['name'];?></a></li>
+        <li>
+            <a href="./view-hotel.php?id=<?php echo $hotel['id'];?>"><?php echo $hotel['name'];?></a>
+        </li>
         <?php endforeach;?>
         </ul>  
+        
     </body> 
 </html>
 

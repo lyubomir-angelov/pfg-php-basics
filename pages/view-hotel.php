@@ -3,7 +3,6 @@ include_once '../includes/common.php';
 include_once '../includes/functions.php';
 
 $hotel = getHotel($_GET['id']);
-
 ?>
 <!DOCTYPE html>   
 <html> 
@@ -13,29 +12,16 @@ $hotel = getHotel($_GET['id']);
     </head>   
     <body>
         <h1>ЛОГО</h1>
-        <ul>
-            <li><a href="../index.php">Начало</a></li>
-            <li><a href="./hotels.php">Хотели</a></li>
-            <li><a href="./users.php">Потребители</a></li>
-            
-            <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true): ?>
-            
-            <li>Welcome <strong><?php echo $_SESSION['user']['username']; ?></strong></li>
-            <li><a href="./logout.php">Изход</a></li>
-            
-            <?php else: ?>
-            
-            <li><a href="./login.php">Вход</a></li>
-            <li><a href="./register.php">Регистрация</a></li>
-            
-            <?php endif;?>
-        </ul>  
+        
+        <?php echo getMenu('.'); ?> 
         
         <hr/>
         
-        <h2>HOTEL NAME <?php echo $hotel ['name']; ?></h2>
-        <span>HOTEL STARS <?php echo $hotel ['stars']; ?></span>
-        <p>HOTEL DESCRIPTION <?php echo $hotel ['description']; ?></p>
+        <h2><?php echo $hotel['name'];?></h2>
+        <span>HOTEL STARS</span>
+        
+        <p>HOTEL DESCRIPTION</p>
+        
     </body> 
 </html>
 

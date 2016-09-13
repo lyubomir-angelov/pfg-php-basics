@@ -2,6 +2,8 @@
 include_once '../includes/common.php';
 include_once '../includes/functions.php';
 
+$userdetail = getUser($_GET['id']);
+
 ?>
 <!DOCTYPE html>   
 <html> 
@@ -11,18 +13,13 @@ include_once '../includes/functions.php';
     </head>   
     <body>
         <h1>ЛОГО</h1>
-        
-        <?php echo getMenu('.'); ?> 
+        <?php echo getMenu('.') ?> 
         
         <hr/>
         
-        <h2>Потребители</h2>
-        
-        <ul>
-        <?php foreach (getAllUsers() as $user):?>
-        <li><a href=""><?php echo $user['username'];?></a></li>
-        <?php endforeach;?>
-        </ul>  
+        <h2>ИМЕ НА ПОТРЕБИТЕЛ <?php echo $userdetail ['username']; ?></h2>
+        <span>ЕМАЙЛ НА ПОТРЕБИТЕЛ <?php echo $userdetail ['email']; ?></span>
+        <p>ПОЛ НА ПОТРЕБИТЕЛЯ <?php echo $userdetail ['gender']; ?></p>
     </body> 
 </html>
 

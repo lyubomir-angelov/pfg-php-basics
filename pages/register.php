@@ -23,7 +23,8 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Register') {
     </head>   
     <body>
         <h1>ЛОГО</h1>
-<?php echo getMenu('.') ?> 
+        
+        <?php echo getMenu('.'); ?> 
         
         <hr/>
         
